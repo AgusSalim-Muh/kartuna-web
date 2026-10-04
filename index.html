@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KARTUNA - Portal Informasi & Layanan Karang Taruna</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              amber: {
+                50: "#fffbeb",
+                100: "#fef3c7",
+                500: "#f59e0b",
+                600: "#d97706",
+                700: "#b45309",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+    <!-- Nomor WA Admin Default -->
+    <script>
+      const NO_WA_ADMIN = "6282314726046"; // Ganti dengan nomor WhatsApp Admin Anda
+    </script>
+
+    <!-- Header / Navbar -->
+    <header class="bg-amber-600 text-white shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-2 cursor-pointer" onclick="switchTab('home')">
+          <i class="fa-solid fa-users text-2xl text-amber-200"></i>
+          <span class="text-2xl font-bold tracking-wide">KARTUNA</span>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex space-x-6 font-medium">
+          <button onclick="switchTab('home')" id="nav-home" class="hover:text-amber-200 transition py-1 border-b-2 border-white">Beranda</button>
+          <button onclick="switchTab('katalog')" id="nav-katalog" class="hover:text-amber-200 transition py-1 border-b-2 border-transparent">Katalog Aset</button>
+          <button onclick="switchTab('pengaduan')" id="nav-pengaduan" class="hover:text-amber-200 transition py-1 border-b-2 border-transparent">Layanan Pengaduan</button>
+        </nav>
+
+        <a
+          href="javascript:void(0)"
+          onclick="hubungiWA('Halo Admin KARTUNA, saya ingin bertanya info seputar kegiatan warga.')"
+          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full font-medium transition shadow flex items-center space-x-2 text-sm"
+        >
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span class="hidden sm:inline">Hubungi WA</span>
+        </a>
+      </div>
+
+      <!-- Mobile Nav Bar -->
+      <div class="flex justify-around md:hidden bg-amber-700 py-2 text-sm font-medium border-t border-amber-500">
+        <button onclick="switchTab('home')" id="m-nav-home" class="text-amber-200 font-bold">Beranda</button>
+        <button onclick="switchTab('katalog')" id="m-nav-katalog" class="text-white">Katalog Aset</button>
+        <button onclick="switchTab('pengaduan')" id="m-nav-pengaduan" class="text-white">Pengaduan</button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+      <!-- ================= PAGE 1: BERANDA ================= -->
+      <section id="page-home" class="block">
+        <!-- Hero Banner -->
+        <div class="bg-gradient-to-b from-amber-600 to-amber-500 text-white py-16 px-4 text-center">
+          <div class="max-w-3xl mx-auto">
+            <span class="bg-amber-700 text-amber-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Sistem Digital Warga</span>
+            <h1 class="text-3xl md:text-5xl font-extrabold mt-3 mb-4 leading-tight">Portal Resmi Karang Taruna KARTUNA</h1>
+            <p class="text-amber-100 text-base md:text-lg mb-8">Mewujudkan transparansi, kemudahan peminjaman fasilitas warga, serta wadah penyampaian aspirasi dan pengaduan masyarakat secara digital.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <button onclick="switchTab('katalog')" class="bg-white text-amber-700 hover:bg-amber-50 font-bold px-6 py-3 rounded-lg shadow transition flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-boxes-packing"></i>
+                <span>Sewa / Pinjam Aset</span>
+              </button>
+              <button onclick="switchTab('pengaduan')" class="bg-amber-800 hover:bg-amber-900 text-white font-bold px-6 py-3 rounded-lg shadow transition flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-bullhorn"></i>
+                <span>Buat Pengaduan</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fitur Utama -->
+        <div class="max-w-6xl mx-auto px-4 py-12">
+          <h2 class="text-2xl font-bold text-center text-slate-800 mb-8">Layanan Utama KARTUNA</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition text-center">
+              <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fa-solid fa-box-open"></i>
+              </div>
+              <h3 class="font-bold text-lg mb-2">Sewa / Pinjam Aset</h3>
+              <p class="text-slate-600 text-sm mb-4">Katalog peralatan tenda, sound system, meja, dan kursi milik Karang Taruna untuk keperluan acara warga.</p>
+              <button onclick="switchTab('katalog')" class="text-amber-600 font-semibold hover:underline text-sm">Lihat Katalog &rarr;</button>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition text-center">
+              <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fa-solid fa-comments"></i>
+              </div>
+              <h3 class="font-bold text-lg mb-2">Layanan Pengaduan</h3>
+              <p class="text-slate-600 text-sm mb-4">Sampaikan masukan, keluhan, atau aspirasi mengenai lingkungan dan kegiatan RT/RW secara langsung ke pengurus.</p>
+              <button onclick="switchTab('pengaduan')" class="text-amber-600 font-semibold hover:underline text-sm">Kirim Pengaduan &rarr;</button>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition text-center">
+              <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <h3 class="font-bold text-lg mb-2">Fast Response WA</h3>
+              <p class="text-slate-600 text-sm mb-4">Semua pengajuan pinjaman dan pengaduan langsung dikirim ke WhatsApp Admin agar cepat ditindaklanjuti.</p>
+              <a href="javascript:void(0)" onclick="hubungiWA('Halo Admin, saya mau tanya informasi umum.')" class="text-amber-600 font-semibold hover:underline text-sm">Chat Admin &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 2: KATALOG ASET ================= -->
+      <section id="page-katalog" class="hidden max-w-6xl mx-auto px-4 py-8">
+        <div class="mb-8 text-center">
+          <h2 class="text-3xl font-bold text-slate-800">Katalog Aset & Inventaris</h2>
+          <p class="text-slate-600 mt-2">Pilih fasilitas/peralatan yang ingin disewa atau dipinjam untuk kegiatan Anda.</p>
+        </div>
+
+        <!-- Grid Barang -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Item 1 -->
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition flex flex-col justify-between">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-2xl mb-4">
+                <i class="fa-solid fa-campground"></i>
+              </div>
+              <span class="text-xs font-semibold bg-green-100 text-green-700 px-2 py-1 rounded">Tersedia</span>
+              <h3 class="text-xl font-bold mt-2">Tenda Terop (4x6m)</h3>
+              <p class="text-slate-600 text-sm mt-1">Tenda besi lengkap dengan terpal serbaguna untuk pesta atau hajatan warga.</p>
+              <div class="mt-4 pt-4 border-t text-sm font-medium text-slate-700">Status: <span class="text-amber-600">Sewa / Pinjam Warga</span></div>
+            </div>
+            <div class="p-4 bg-slate-50 border-t">
+              <button onclick="sewaBarang('Tenda Terop (4x6m)')" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition flex items-center justify-center space-x-2">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Sewa via WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition flex flex-col justify-between">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-2xl mb-4">
+                <i class="fa-solid fa-bullhorn"></i>
+              </div>
+              <span class="text-xs font-semibold bg-green-100 text-green-700 px-2 py-1 rounded">Tersedia</span>
+              <h3 class="text-xl font-bold mt-2">Sound System Portable</h3>
+              <p class="text-slate-600 text-sm mt-1">Speaker portable Bluetooth 12 inch + 2 Wireless Mic untuk rapat / pengajian.</p>
+              <div class="mt-4 pt-4 border-t text-sm font-medium text-slate-700">Status: <span class="text-amber-600">Sewa / Pinjam Warga</span></div>
+            </div>
+            <div class="p-4 bg-slate-50 border-t">
+              <button onclick="sewaBarang('Sound System Portable')" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition flex items-center justify-center space-x-2">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Sewa via WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition flex flex-col justify-between">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-2xl mb-4">
+                <i class="fa-solid fa-chair"></i>
+              </div>
+              <span class="text-xs font-semibold bg-green-100 text-green-700 px-2 py-1 rounded">Tersedia (100 Unit)</span>
+              <h3 class="text-xl font-bold mt-2">Kursi Plastik Napolly</h3>
+              <p class="text-slate-600 text-sm mt-1">Kursi plastik kuat berkualitias tinggi untuk keperluan acara indoor / outdoor.</p>
+              <div class="mt-4 pt-4 border-t text-sm font-medium text-slate-700">Status: <span class="text-amber-600">Sewa / Pinjam Warga</span></div>
+            </div>
+            <div class="p-4 bg-slate-50 border-t">
+              <button onclick="sewaBarang('Kursi Plastik Napolly')" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition flex items-center justify-center space-x-2">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Sewa via WhatsApp</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 3: PENGADUAN ================= -->
+      <section id="page-pengaduan" class="hidden max-w-2xl mx-auto px-4 py-8">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200">
+          <div class="text-center mb-6">
+            <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-2">
+              <i class="fa-solid fa-paper-plane"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-800">Form Pengaduan Warga</h2>
+            <p class="text-slate-600 text-sm mt-1">Isi formulir di bawah ini. Pesan pengaduan Anda akan diformat dan dikirimkan langsung ke WhatsApp Admin KARTUNA.</p>
+          </div>
+
+          <form onsubmit="kirimPengaduan(event)" class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap *</label>
+              <input type="text" id="p-nama" required placeholder="Masukkan nama Anda" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">RT / RW *</label>
+              <input type="text" id="p-rtrw" required placeholder="Contoh: RT 02 / RW 01" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Kategori Pengaduan *</label>
+              <select id="p-kategori" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white">
+                <option value="Fasilitas Umum">Fasilitas Umum / Kerusakan</option>
+                <option value="Kegiatan Pemuda">Kegiatan Pemuda / Karang Taruna</option>
+                <option value="Kebersihan Lingkungan">Kebersihan & Keamanan Lingkungan</option>
+                <option value="Saran & Usul">Saran / Usulan Program</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Detail Pengaduan / Aspirasi *</label>
+              <textarea id="p-pesan" rows="4" required placeholder="Tuliskan isi pengaduan Anda secara rinci..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition flex items-center justify-center space-x-2 shadow">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+              <span>Kirim via WhatsApp Admin</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="javascript:void(0)"
+      onclick="hubungiWA('Halo Admin KARTUNA, saya ingin bertanya.')"
+      class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center justify-center text-2xl z-50"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-6 text-center text-sm border-t border-slate-700 mt-8">
+      <p>&copy; 2026 KARTUNA - Karang Taruna. All rights reserved.</p>
+    </footer>
+
+    <!-- SCRIPT INTERAKTIF NAVIGASI & WHATSAPP -->
+    <script>
+      function switchTab(tabName) {
+        // Hide all pages
+        document.getElementById("page-home").classList.add("hidden");
+        document.getElementById("page-katalog").classList.add("hidden");
+        document.getElementById("page-pengaduan").classList.add("hidden");
+
+        // Reset desktop border active
+        document.getElementById("nav-home").className = "hover:text-amber-200 transition py-1 border-b-2 border-transparent";
+        document.getElementById("nav-katalog").className = "hover:text-amber-200 transition py-1 border-b-2 border-transparent";
+        document.getElementById("nav-pengaduan").className = "hover:text-amber-200 transition py-1 border-b-2 border-transparent";
+
+        // Show current page
+        document.getElementById("page-" + tabName).classList.remove("hidden");
+        document.getElementById("nav-" + tabName).className = "hover:text-amber-200 transition py-1 border-b-2 border-white font-bold";
+
+        // Scroll top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function hubungiWA(pesan) {
+        const url = `https://wa.me/${NO_WA_ADMIN}?text=${encodeURIComponent(pesan)}`;
+        window.open(url, "_blank");
+      }
+
+      function sewaBarang(namaBarang) {
+        const pesan = `Halo Admin KARTUNA,\nSaya bermaksud ingin menyewa / meminjam aset berikut:\n\n*Barang:* ${namaBarang}\n\nMohon info ketersediaan tanggal dan persyaratannya. Terima kasih!`;
+        hubungiWA(pesan);
+      }
+
+      function kirimPengaduan(e) {
+        e.preventDefault();
+        const nama = document.getElementById("p-nama").value;
+        const rtrw = document.getElementById("p-rtrw").value;
+        const kategori = document.getElementById("p-kategori").value;
+        const pesan = document.getElementById("p-pesan").value;
+
+        const teksWA = `*PENGADUAN / ASPIRASI WARGA - KARTUNA*\n\n` + `*Nama:* ${nama}\n` + `*RT/RW:* ${rtrw}\n` + `*Kategori:* ${kategori}\n\n` + `*Isi Pengaduan:*\n"${pesan}"\n\n` + `Mohon ditindaklanjuti. Terima kasih.`;
+
+        hubungiWA(teksWA);
+      }
+    </script>
+  </body>
+</html>
